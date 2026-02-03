@@ -1,0 +1,31 @@
+:root{--bg:#0b1020;--card:#121a2b;--muted:#9aa4b2;--text:#e5ecf4;--primary:#2563eb;--accent:#10b981;--warn:#f59e0b;--danger:#ef4444}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Avenir,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#0b1020,#0e1425);color:var(--text)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:rgba(0,0,0,.2);position:sticky;top:0;backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav .brand{font-weight:700}
+.nav .links{display:flex;gap:12px;align-items:center}
+.nav a{color:var(--text);opacity:.9;text-decoration:none}
+.container{padding:20px;max-width:1100px;margin:0 auto}
+.card{background:var(--card);padding:16px;border-radius:12px;border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 30px rgba(0,0,0,.2);margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.auth{max-width:420px;margin:40px auto}
+label{display:block;margin:8px 0 4px;color:var(--muted);font-size:.9rem}
+input,select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:#0f1527;color:var(--text)}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{border-bottom:1px solid rgba(255,255,255,.08);padding:10px;text-align:left}
+.form-row{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:10px;align-items:end}
+.btn{background:var(--primary);color:white;border:none;padding:10px 14px;border-radius:10px;cursor:pointer}
+.btn-secondary{background:var(--warn)}
+.btn-danger{background:var(--danger)}
+.error{color:#ffb4b4;margin-top:8px}
+.success{color:#9ef3c3;margin-top:8px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.stat{background:#0f1527;border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:10px}
+.stat-title{font-size:.8rem;color:var(--muted)}
+.stat-value{font-weight:700}
+.badge{background:#0f1527;border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:4px 8px;color:var(--muted);font-size:.8rem}
+.pill{border-radius:999px;padding:2px 8px;margin-right:6px}
+.pill-transport{background:rgba(245,158,11,.2);border:1px solid #f59e0b}
+.pill-energy{background:rgba(16,185,129,.2);border:1px solid #10b981}
+.pill-food{background:rgba(239,68,68,.2);border:1px solid #ef4444}
+@media (max-width:640px){.stats{grid-template-columns:1fr}.form-row{grid-template-columns:1fr 1fr}.nav .links{gap:8px}}
