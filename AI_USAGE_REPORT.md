@@ -2,13 +2,19 @@
 
 Project: Carbon Footprint Calculator & Tracker with AI-Powered Recommendations
 
-Author: Cascade (Senior Full-Stack & AI Engineer)
-Date: 2026-02-02
+Author: Saudan Singh
+Date: 2026-02-03
 
 ## Objectives of AI Integration
-- Provide actionable, personalized sustainability recommendations based on a user’s recent emissions history.
-- Complement deterministic analytics (emission factors and aggregations) with adaptive advice that reflects the user’s unique patterns across transport, energy, and food.
+- Provide actionable, personalized sustainability recommendations based on a user's recent emissions history.
+- Complement deterministic analytics (emission factors and aggregations) with adaptive advice that reflects the user's unique patterns across transport, energy, and food.
 - Maintain safe operation under API errors, missing keys, or rate limits via deterministic heuristics.
+
+## AI Implementation Scope
+- **Limited, targeted usage**: AI is used specifically for generating personalized recommendations only
+- **Minimal data processing**: AI receives compact, aggregated emissions data (max 50 recent activities)
+- **Focused functionality**: AI powers only the recommendation engine - all other features are deterministic
+- **Efficient design**: Small, structured prompts to minimize token usage and costs
 
 ## Model and Provider
 - Primary: OpenAI Chat Completions (configurable model, default `gpt-4o-mini`).
@@ -52,10 +58,11 @@ Sample system directive (abridged):
 - Data retention: This reference implementation does not store model outputs. If you choose to log AI outputs, redact sensitive fields and comply with data policies.
 
 ## Cost Management
-- Rate limiting significantly reduces redundant calls.
-- Payloads are compact (50 recent records cap) to minimize tokens.
-- Low temperature reduces retries due to malformed output.
-- Optional: Add daily quotas per user/org and an admin-configurable toggle to disable AI when costs exceed budgets.
+- **Minimal AI usage**: Only 1 API call per user every 30 seconds maximum
+- **Compact payloads**: Maximum 50 recent activities to minimize token usage
+- **Rate limiting**: Prevents unnecessary API calls and controls costs
+- **Efficient prompts**: Low temperature (0.4) reduces retries and malformed outputs
+- **Fallback system**: Heuristic recommendations when AI is unavailable to avoid costs
 
 ## Evaluation and Quality
 - Qualitative checks: Advice specificity, variety across categories, and feasibility for an average user.
@@ -79,4 +86,12 @@ Sample system directive (abridged):
 - Reinforcement feedback loop: thumbs up/down on each suggestion to improve future recommendations.
 
 ## Summary
-This AI layer augments deterministic emissions analytics with personalized, actionable guidance. It is built with safety (rate limits, fallbacks), privacy (backend-only key usage), and cost control (windowed data, capped history) in mind. The system delivers consistent value even in degraded modes, and is structured for iterative improvement as usage insights accumulate.
+This AI implementation demonstrates **minimal, targeted use of artificial intelligence** in a carbon footprint application. The AI is limited to a single, well-defined task: generating personalized recommendations. All other functionality (emissions calculation, data visualization, user authentication) remains fully deterministic.
+
+The system prioritizes cost efficiency and reliability:
+- **Sparse AI usage**: Maximum 1 API call per user every 30 seconds
+- **Compact data transmission**: Only essential emissions data sent to AI
+- **Robust fallbacks**: Heuristic system ensures continuous service without AI
+- **Privacy-first**: Backend-only API calls with minimal user data
+
+This approach showcases how AI can enhance applications meaningfully while maintaining control over costs, privacy, and system reliability.
